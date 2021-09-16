@@ -10,12 +10,10 @@ function wordsearch(board, word) {
    let y = board[0].length
    let wordLength = word.length;
    
-   for(let i = 0; i < x; i++)
-   {
-       for(let j = 0; j < y; j++)
-       {
-           if(depthFirstSearch(i,j,0)) return true;//word found
-       }
+   for(let i = 0; i < x; i++){
+      for(let j = 0; j < y; j++){
+         if(depthFirstSearch(i,j,0)) return true;//word found
+      }
    }
 
 /**

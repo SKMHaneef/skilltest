@@ -1,36 +1,18 @@
 class InfiniteScrollPage
 {
-    
+    //To get sub div elements locator
     Getsubdiv() {
-
         return cy.get('div.jscroll-added')
     }
-    Getsubdivlocator() {
-
-        return 'div.jscroll-added'
-    }
-    Get_initial_subdiv_count(){
-        cy.get('div.jscroll-added').then(listing => {
-           const initialCount = Cypress.$(listing).length;
-           cy.writeFile('cypress/fixtures/temp.json', { "Initialcount":initialCount})
-            initialCount
-        })
-    }
-
-    Scroll_to_bottom_Action(){
-        for(let i=1;i<=5;i++){
-            cy.scrollTo('bottom')
-            cy.wait(5000);
+    //To scroll to the bottom of the window
+    ScrollToBottomAction(){
+        this.Getsubdiv().should('have.length',2)
+        for(let i=1;i<=3;i++){
+            cy.scrollTo('bottom',{duration:4000})
         }
     }
-
-    Assert_new_subdiv_Addition(){
-       cy.fixture('temp.json').then(function(data)
-        {
-            cy.get('div.jscroll-added').then(finaldivlength=>{
-                expect(finaldivlength.length).to.greaterThan(data.Initialcount);
-            })
-        })
+    //To assert if new sub div elements added or not
+    AssertNewSubDivAddition(){
+        this.Getsubdiv().should('have.length',5)
     }
-    
 }export default InfiniteScrollPage

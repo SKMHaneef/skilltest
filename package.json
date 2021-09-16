@@ -8,6 +8,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+
+    "draganddroptest": "cypress run --spec cypress/integration/dragdroptest.spec.js",
+    "infinitescrolltest": "cypress run --spec cypress/integration/infinitescroll.spec.js",
+    "twoDarraytest": "node ./cypress/integration/twoDimentionalArray.js",
     "clean:reports": "del-cli cypress/reports/mocha/*",
     "merge": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json",
     "generate_mochawesome_report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports",

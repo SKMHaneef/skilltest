@@ -10,36 +10,24 @@ class DragDropPage
         return cy.get('#column-b')
     }
 
-    //to return container string
-    //as drag function accept only locator string as parameter
-    GetcontainerBlocator() {
-        return '#column-b'
+    /** 
+     * This method is to validate text available in container 1
+     * @param text text that should be available in container1
+    */
+    assertTextInContainer1(text){
+        this.GetcontainerA().should("contain",text)
     }
 
-    //to get containerA and check for initial text available in it befor performing drag action
-    Assert_initial_text_in_A(){
-        this.GetcontainerA().should("contain","A")
-    }
-
-    //to get containerB and check for initial text available in it befor performing drag action
-    Assert_initial_text_in_B(){
-        this.GetcontainerB().should("contain","B")
+    /** 
+     * This method is to validate text available in container 2
+     * @param text text that should be available in container 2
+    */
+    assertTextInContainer2(text){
+        this.GetcontainerB().should("contain",text)
     }
 
     //to drag contents in containerA and drop on containerB
     DragAtoB(){
         this.GetcontainerA().drag(this.GetcontainerBlocator())
     }
-
-    //to get containerA and check for final text available in it after drag action
-    Assert_final_text_in_A(){
-        this.GetcontainerA().should("contain","B")
-    }
-
-    //to get containerB and check for final text available in it after drag action
-    Assert_final_text_in_B(){
-
-        this.GetcontainerB().should("contain","A")
-    }
-    
 }export default DragDropPage
